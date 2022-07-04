@@ -1,0 +1,11 @@
+<div class="row">
+    <form method="post" action="" id="formulario" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.as_table}}
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar Informacion</button>
+    </form>
+    {{mensaje}}
+  
+  </div>

@@ -1,0 +1,74 @@
+{% extends 'tienda/main.html' %}
+{% load static %}
+{% block content %}
+     <div class="row">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form id="form">
+					<div id="user-info">
+						<div class="form-field">
+							<input required class="form-control" type="text" name="name" placeholder="Nombre Completo..">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="email" name="email" placeholder="Email..">
+						</div>
+					</div>
+					
+					<div id="shipping-info">
+						<hr>
+						<p>Despacho a Domicilio:</p>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="address" placeholder="Dirección..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="city" placeholder="Ciudad..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="state" placeholder="Region..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="country" placeholder="Pais..">
+						</div>
+					</div>
+
+					<hr>
+					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+				</form>
+			</div>
+
+			<br>
+			<div class="box-element hidden" id="payment-info">
+				<small> Opciones Paypal</small>
+			</div>
+			
+		</div>
+
+		<div class="col-lg-6">
+			<div class="box-element">
+				<a  class="btn btn-outline-dark" href="{% url 'carrito' %}">&#x2190; Volver al carrito</a>
+
+				<hr>
+				<h3>Total Compra</h3>
+				<hr>
+
+				{% for item in items %}
+								
+				<div class="cart-row">
+					<div style="flex:2"><img class="row-image" src="{{item.producto.image.url}}"></div>
+					<div style="flex:2">{{item.producto.nombre}}</div>
+					<div style="flex:1">${{item.producto.precio | floatformat:0}}</div>
+					<p class="cantidad">x{{item.cantidad}}</p>
+				</div>
+
+				{% endfor %}
+
+				<h5>Artículos:   {{carrito.get_cart_items}}</h5>
+				<h5>Total: ${{carrito.get_cart_total | floatformat:0}}</h5>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
