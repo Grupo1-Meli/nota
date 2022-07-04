@@ -1,0 +1,23 @@
+{% extends 'panel/dash.html' %}
+{% load static %}
+{% block content %}
+{% block title  %}  Editar {% endblock %}
+
+<div class="container">
+  <div class="row">
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-header">
+            Editar Los Datos del Producto
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Datos del Producto</h4>
+            {% include 'tienda/form.html'%}
+
+
+          </div>
+          <div class="card-footer text-muted">
+          </div>
+        </div>
+  {% endblock content %}
